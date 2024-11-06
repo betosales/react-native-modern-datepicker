@@ -1,12 +1,12 @@
 import type {FunctionComponent} from 'react';
 import type { StyleProp, ViewStyle } from "react-native";
 
-declare const ModernDatePicker:FunctionComponent
-export default ModernDatePicker
+declare const DatePicker:FunctionComponent
+export default DatePicker
 export declare function getFormatedDate(date?: Date, format?: string):string
 export declare function getToday():string
 
-export interface ModernDatePickerProps {
+export interface DatePickerProps {
   /** Gets called when selected value changes */
   onSelectedChange: (dateString: string) => void
   /** Gets called when month changes */
@@ -36,7 +36,7 @@ export interface ModernDatePickerProps {
   isGregorian: boolean
   
   /** Customizing date picker style */
-  options: Partial<ModernDatePickerOptions>
+  options: Partial<DatePickerOptions>
   
   mode: 'datepicker' | 'calendar' | 'monthYear' | 'time'
   
@@ -46,7 +46,7 @@ export interface ModernDatePickerProps {
   style: StyleProp<ViewStyle>
 }
 
-export interface ModernDatePickerOptions {
+export interface DatePickerOptions {
   textHeaderColor: string
   textDefaultColor: string
   selectedTextColor: string
