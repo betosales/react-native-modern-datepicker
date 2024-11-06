@@ -21,8 +21,8 @@ const Calendar = () => {
     <View style={style.container}>
       <Header changeMonth={changeMonthAnimation} />
       <View style={[style.daysName, utils.flexDirection]}>
-        {utils.config.dayNamesShort.map(item => (
-          <Text key={item} style={style.daysNameText}>
+        {utils.config.dayNamesShort.map((item, index) => (
+          <Text key={index} style={style.daysNameText}>
             {item}
           </Text>
         ))}
