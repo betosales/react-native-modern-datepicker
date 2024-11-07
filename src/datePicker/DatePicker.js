@@ -90,7 +90,7 @@ const DatePicker = ({
     utils: calendarUtils,
     state: useReducer(reducer, {
       activeDate: current || calendarUtils.getToday(),
-      selectedDate: selected ? calendarUtils.getFormatted(calendarUtils.getDate(selected)) : '',
+      selectedDate: selected ? calendarUtils.getFormated(calendarUtils.getDate(selected)) : '',
       monthOpen: mode === 'monthYear',
       timeOpen: mode === 'time',
     }),
