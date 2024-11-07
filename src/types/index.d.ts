@@ -39,6 +39,12 @@ export interface DatePickerProps {
 
   /** Changes date picker container style */
   style?: StyleProp<ViewStyle>;
+
+  configs: {
+    dayNames: string[];
+    dayNamesShort: string[];
+    monthNames: string[];
+  };
 }
 
 export interface DatePickerOptions {
