@@ -132,6 +132,9 @@ const createStyles = theme =>
     },
   });
 
+const modeArray = ['datepicker', 'calendar', 'monthYear', 'time'];
+const minuteIntervalArray = [1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60];
+
 const optionsShape = {
   backgroundColor: PropTypes.string,
   textHeaderColor: PropTypes.string,
