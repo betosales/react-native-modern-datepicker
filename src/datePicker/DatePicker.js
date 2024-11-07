@@ -1,9 +1,9 @@
-import React, { createContext, useReducer, useContext, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, {createContext, useReducer, useContext, useState} from 'react';
+import {View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 
-import { Calendar, SelectMonth, SelectTime } from './components';
-import { utils } from '../utils';
+import {Calendar, SelectMonth, SelectTime} from './components';
+import {utils} from '../utils';
 
 const options = {
   backgroundColor: '#fff',
@@ -24,11 +24,11 @@ const options = {
 const reducer = (state, action) => {
   switch (action.type) {
     case 'set':
-      return { ...state, ...action };
+      return {...state, ...action};
     case 'toggleMonth':
-      return { ...state, monthOpen: !state.monthOpen };
+      return {...state, monthOpen: !state.monthOpen};
     case 'toggleTime':
-      return { ...state, timeOpen: !state.timeOpen };
+      return {...state, timeOpen: !state.timeOpen};
     default:
       throw new Error('Unexpected action');
   }
@@ -59,19 +59,26 @@ const DatePicker = ({
   options: userOptions = {},
   mode = 'datepicker',
   minuteInterval = 5,
-  style = {}
+  style = {},
 }) => {
-  const calendarUtils = new utils({ configs, isGregorian, mode, reverse, selected, current, minimumDate, maximumDate });
+  const calendarUtils = new utils({
+    configs,
+    isGregorian,
+    mode,
+    reverse,
+    selected,
+    current,
+    minimumDate,
+    maximumDate,
+  });
   const contextValue = {
     ...props,
     reverse: reverse === 'unset' ? !isGregorian : reverse,
-    options: { ...options, ...userOptions },
+    options: {...options, ...userOptions},
     utils: calendarUtils,
     state: useReducer(reducer, {
       activeDate: current || calendarUtils.getToday(),
-      selectedDate: selected
-        ? calendarUtils.getFormatted(calendarUtils.getDate(selected))
-        : '',
+      selectedDate: selected ? calendarUtils.getFormatted(calendarUtils.getDate(selected)) : '',
       monthOpen: mode === 'monthYear',
       timeOpen: mode === 'time',
     }),
@@ -107,8 +114,8 @@ const DatePicker = ({
   return (
     <CalendarContext.Provider value={contextValue}>
       <View
-        style={[styles.container, { minHeight }, style]}
-        onLayout={({ nativeEvent }) => setMinHeight(nativeEvent.layout.width * 0.9 + 55)}>
+        style={[styles.container, {minHeight}, style]}
+        onLayout={({nativeEvent}) => setMinHeight(nativeEvent.layout.width * 0.9 + 55)}>
         {renderBody()}
       </View>
     </CalendarContext.Provider>
@@ -140,10 +147,10 @@ DatePicker.propTypes = {
   isGregorian: PropTypes.bool,
   configs: PropTypes.object,
   reverse: PropTypes.oneOf([true, false, 'unset']),
-  options: PropTypes.shape(optionsShape),
+  options: PropTypes.shape(options),
   mode: PropTypes.oneOf(modeArray),
   minuteInterval: PropTypes.oneOf(minuteIntervalArray),
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 };
 
-export { DatePicker, CalendarContext, useCalendar };
+export {DatePicker, CalendarContext, useCalendar};
