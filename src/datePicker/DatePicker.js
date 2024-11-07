@@ -132,6 +132,22 @@ const createStyles = theme =>
     },
   });
 
+const optionsShape = {
+  backgroundColor: PropTypes.string,
+  textHeaderColor: PropTypes.string,
+  textDefaultColor: PropTypes.string,
+  selectedTextColor: PropTypes.string,
+  mainColor: PropTypes.string,
+  textSecondaryColor: PropTypes.string,
+  borderColor: PropTypes.string,
+  defaultFont: PropTypes.string,
+  headerFont: PropTypes.string,
+  textFontSize: PropTypes.number,
+  textHeaderFontSize: PropTypes.number,
+  headerAnimationDistance: PropTypes.number,
+  daysAnimationDistance: PropTypes.number,
+};
+
 DatePicker.propTypes = {
   onSelectedChange: PropTypes.func,
   onMonthYearChange: PropTypes.func,
@@ -147,7 +163,7 @@ DatePicker.propTypes = {
   isGregorian: PropTypes.bool,
   configs: PropTypes.object,
   reverse: PropTypes.oneOf([true, false, 'unset']),
-  options: PropTypes.shape(options),
+  options: PropTypes.shape(optionsShape),
   mode: PropTypes.oneOf(modeArray),
   minuteInterval: PropTypes.oneOf(minuteIntervalArray),
   style: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
